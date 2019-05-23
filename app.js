@@ -9,13 +9,24 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 var LedMatrix = require("easybotics-rpi-rgb-led-matrix");
+var gm = require('gm');
+var getPixels = require("get-pixels");
+var mime = require('mime-types');
+var matrix = new LedMatrix(64, 64);
 
-//init a 16 rows  by 16 cols led matrix 
-//default hardware mapping is 'regular', could be 'adafruit-hat-pwm' ect 
-var matrix = new LedMatrix(16, 16 );
-matrix.fill(255, 50, 100);
-matrix.setPixel(0, 0, 0, 50, 255);
-matrix.update();
+getPixels("http://transfer.static.keyfactory.group/testimag.png", function (err, pixels) {
+  if (err) {
+    console.log("Bad image path")
+    return
+  }
+  for (let x = 0; x < 64; x++) {
+    for (let y = 0; y < 64; y++) {
+      matrix.setPixel(x, y, pixels.get(x, y, 0), pixels.get(x, y, 1), pixels.get(x, y, 2));
+    }
+  }
+  matrix.update();
+})
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,12 +42,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 
 <head>
-    <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/8bit-wonder" rel="stylesheet"
-        type="text/css" />
+    <link rel="stylesheet" media="screen" href="http://openfontlibrary.org/face/8bit-wonder" rel="stylesheet"type="text/css" />
     <link rel="stylesheet" href="stylesheets/style.css" />
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/three.js/r83/three.js"></script>
+    <script src="javascripts/jquery-3.4.1.min.js"></script>
+    <script src="javascripts/three.min.js"></script>
+
+    <script src="javascripts/shaders/CopyShader.js"></script>
+    <script src="javascripts/shaders/DigitalGlitch.js"></script>
+
+    <script src="javascripts/postprocessing/EffectComposer.js"></script>
+    <script src="javascripts/postprocessing/RenderPass.js"></script>
+    <script src="javascripts/postprocessing/MaskPass.js"></script>
+    <script src="javascripts/postprocessing/ShaderPass.js"></script>
+    <script src="javascripts/postprocessing/GlitchPass.js"></script>
     <script src="javascripts/main.js"></script>
 </head>
 
 <body>
+    <div class="background">
+
+    </div>
     <div class="page">
-        <button class="fun-btn"></button>
+        <button class="fun-btn">Upload</button>
         <input id="uploadFile" type="file" name="image" accept='image/*'>
     </div>
 </body>

@@ -4,25 +4,18 @@
     display: flex;
     justify-content: center;
   }
-  
-  
-  /* add default color for animation start  */
-  
-  
-  /* toggle this class */
-  
-  .color-bg-start {
-    background-color: salmon;
-  }
-  
-  
-  /* toggle class bg-animate-color */
-  
-  .bg-animate-color {
-    animation: random-bg .5s linear infinite;
-  }
-  
-  
+.background {
+  z-index : -9999;
+  position: absolute;
+  top : 0;
+  left    : 0;
+  width   : 100%;
+  height  : 100%;
+  margin  : 0;
+  padding : 0;
+
+}
+
   /* add animation to bg color  */
   
   @keyframes random-bg {
@@ -48,12 +41,12 @@
     align-self: center;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .fun-btn:hover {
+    font-size: 150%;
     animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+
   }
   
+
   .start-fun {
     background-color: #fff !important;
     /* change color of button text when fun is started   */

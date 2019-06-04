@@ -41,7 +41,7 @@
     align-self: center;
     cursor: pointer;
     font-weight: bold;
-    font-size: 150%;
+    /* font-size: 150%; */
     animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
 
   }
